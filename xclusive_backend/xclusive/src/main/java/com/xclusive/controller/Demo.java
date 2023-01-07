@@ -18,6 +18,7 @@ public class Demo {
 		System.out.println("hello world");
 		Map<String,String> mp=new HashMap<String,String>();
 		mp.put("101", "Ajay");
+		mp.put("102", "Ayush");
 		return mp;
 	}
 	
