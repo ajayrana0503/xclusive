@@ -27,7 +27,7 @@ public class UserController {
 	@GetMapping("/register")
 	public void saveUser() {
 		Users u= new Users();
-		u.setEmail("ayush@gmail.com");
+		u.setEmail("ajay@gmail.com");
 		u.setName("ajay");
 		u.setPassword("ajay");
 		this.userService.saveUser(u);
