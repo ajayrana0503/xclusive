@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { take } from "rxjs";
 
 @Component({
   selector: 'app-sign-up',
@@ -218,29 +219,30 @@ export class SignUpComponent{
       this.confirm.validated
     ) {
       this.loading = true;
-      // this._http
-      //   .post(
-      //     'https://meetup-88c8c-default-rtdb.asia-southeast1.firebasedatabase.app/meetups.json',
-      //     {
-      //       address: this.address.value,
-      //       description: this.description.value,
-      //       image: this.image.value,
-      //       title: this.title.value,
-      //     }
-      //   )
-      //   .pipe(take(1))
-      //   .subscribe(
-      //     (response: any) => {
-      //       this.loading = false;
-      //       console.log(response.token);
+      console.log('reached')
+      this._http
+        .post(
+          'http://localhost:8080/user/register',
+          {
+            email:'test@gmail.com',
+            name:'test',
+            password:'test'
 
-      //       this._route.navigateByUrl('');
-      //     },
-      //     (error) => {
-      //       this.loading = false;
-      //       this.receivedError = error.error.error;
-      //     }
-      //   );
+          }
+        )
+        .pipe(take(1))
+        .subscribe(
+          (response: any) => {
+            this.loading = false;
+            console.log(response.token);
+
+            this._route.navigateByUrl('');
+          },
+          (error) => {
+            this.loading = false;
+            this.receivedError = error.error.error;
+          }
+        );
     }
   }
 }
