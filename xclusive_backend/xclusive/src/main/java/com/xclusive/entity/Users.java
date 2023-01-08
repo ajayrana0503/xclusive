@@ -40,13 +40,7 @@ public class Users {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Users(int uid, String name, String email, String password) {
-		super();
-		this.uid = uid;
-		this.name = name;
-		this.email = email;
-		this.password = password;
-	}
+	
 	public Users() {
 		// TODO Auto-generated constructor stub
 	}
