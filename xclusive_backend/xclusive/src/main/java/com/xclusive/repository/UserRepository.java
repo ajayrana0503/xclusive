@@ -8,4 +8,7 @@ import com.xclusive.entity.Users;
 @Repository
 public interface UserRepository extends JpaRepository<Users, Integer>{
 
+	Users getUserByEmail(String email);
+
+	
 }

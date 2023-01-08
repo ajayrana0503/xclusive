@@ -15,4 +15,9 @@ public class UserService {
 	public void saveUser(Users users) {
 	this.userRepository.save(users);
 	}
+	
+	public Users getUserByEmail(String email){
+		return this.userRepository.getUserByEmail(email);
+		
+	}
 }
