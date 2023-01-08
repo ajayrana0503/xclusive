@@ -1,6 +1,9 @@
 package com.xclusive.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -9,8 +12,10 @@ import jakarta.persistence.Table;
 public class Users {
 
 	@Id
-	private int uid;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int uid;	
 	private String name;
+	@Column(unique = true)
 	private String email;
 	private String password;
 	public int getUid() {
@@ -37,13 +42,7 @@ public class Users {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Users(int uid, String name, String email, String password) {
-		super();
-		this.uid = uid;
-		this.name = name;
-		this.email = email;
-		this.password = password;
-	}
+	
 	public Users() {
 		// TODO Auto-generated constructor stub
 	}
