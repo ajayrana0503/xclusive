@@ -5,11 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.xclusive.entity.Users;
 
-public class UserRepository {
+public interface UserRepository extends JpaRepository<Users, Integer>{
 
-	
-	@Repository
-	public interface EmployeeRepository extends JpaRepository<Users, Long>{
-
-	}
 }
