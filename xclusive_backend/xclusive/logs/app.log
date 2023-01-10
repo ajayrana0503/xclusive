@@ -1,0 +1,19 @@
+2023-01-10 00:20:02,611 TRACE com.xclusive.controller.Demo [http-nio-8080-exec-2] Fatal error
+2023-01-10 00:21:49,080 TRACE com.xclusive.controller.Demo [http-nio-8080-exec-5] Fatal error
+2023-01-10 00:21:49,658 TRACE com.xclusive.controller.Demo [http-nio-8080-exec-6] Fatal error
+2023-01-10 00:21:50,268 TRACE com.xclusive.controller.Demo [http-nio-8080-exec-7] Fatal error
+2023-01-10 00:21:50,674 TRACE com.xclusive.controller.Demo [http-nio-8080-exec-8] Fatal error
+2023-01-10 00:23:19,431 TRACE com.xclusive.controller.Demo [http-nio-8080-exec-1] Fatal error
+2023-01-10 00:23:19,744 TRACE com.xclusive.controller.Demo [http-nio-8080-exec-2] Fatal error
+2023-01-10 00:24:13,845 INFO com.xclusive.XclusiveApplication [restartedMain] Starting XclusiveApplication using Java 17.0.5 with PID 7872 (C:\Users\EARTH\Desktop\xclusive\xclusive_backend\xclusive\target\classes started by EARTH in C:\Users\EARTH\Desktop\xclusive\xclusive_backend\xclusive)
+2023-01-10 00:24:13,845 DEBUG com.xclusive.XclusiveApplication [restartedMain] Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-01-10 00:24:13,845 INFO com.xclusive.XclusiveApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-01-10 00:24:14,478 INFO com.xclusive.XclusiveApplication [restartedMain] Started XclusiveApplication in 0.687 seconds (process running for 262.672)
+2023-01-10 00:28:49,821 INFO com.xclusive.XclusiveApplication [restartedMain] Starting XclusiveApplication using Java 17.0.5 with PID 7872 (C:\Users\EARTH\Desktop\xclusive\xclusive_backend\xclusive\target\classes started by EARTH in C:\Users\EARTH\Desktop\xclusive\xclusive_backend\xclusive)
+2023-01-10 00:28:49,822 DEBUG com.xclusive.XclusiveApplication [restartedMain] Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-01-10 00:28:49,822 INFO com.xclusive.XclusiveApplication [restartedMain] No active profile set, falling back to 1 default profile: "default"
+2023-01-10 00:28:50,445 INFO com.xclusive.XclusiveApplication [restartedMain] Started XclusiveApplication in 0.661 seconds (process running for 538.639)
+2023-01-10 00:28:57,415 ERROR com.xclusive.controller.Demo [http-nio-8080-exec-2] Fatal error
+2023-01-10 00:28:57,818 ERROR com.xclusive.controller.Demo [http-nio-8080-exec-3] Fatal error
+2023-01-10 00:29:23,095 ERROR com.xclusive.controller.Demo [http-nio-8080-exec-4] Fatal error
+2023-01-10 00:29:23,519 ERROR com.xclusive.controller.Demo [http-nio-8080-exec-5] Fatal error
