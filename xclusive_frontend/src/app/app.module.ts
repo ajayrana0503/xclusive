@@ -2,7 +2,6 @@ import { bootstrap, component, imports, providers } from './declaration';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -15,6 +14,7 @@ import { AppComponent } from './app.component';
     imports
   ,
   providers: providers,
-  bootstrap: bootstrap
+  bootstrap: bootstrap,
+  
 })
 export class AppModule { }

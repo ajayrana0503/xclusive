@@ -4,3 +4,11 @@
 .invalid-entry{
   color : red;
 }
+.main{
+  text-align: center;
+  margin-top: 60px;
+  width: 30%;
+  box-shadow: 5px 10px #888888;
+  background-color: skyblue;
+  border-radius: 10%;
+}

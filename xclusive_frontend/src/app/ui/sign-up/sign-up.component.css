@@ -1,10 +1,7 @@
 
 
 .cover{
-  width: 1050px;
-  height: auto;
-  display: flex;
-  justify-content: space-between;
+  background-color: skyblue;
   margin-top: 60px;
 }
 
