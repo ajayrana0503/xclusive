@@ -14,14 +14,18 @@ public class UserDetailsImpl implements UserDetails{
 	private int id;
 	private String username;
 	private String password;
+	private String email;
+	private String name;
 	
 	
 
-	public UserDetailsImpl(int id, String username, String password) {
+	public UserDetailsImpl(int id, String username, String password, String email, String name) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
+		this.email = email;
+		this.name = name;
 	}
 
 	@Override
@@ -31,7 +35,7 @@ public class UserDetailsImpl implements UserDetails{
 	}
 	
 	public static UserDetailsImpl build(Users user) {
-		return new UserDetailsImpl(user.getUid(),user.getEmail(),user.getPassword());
+		return new UserDetailsImpl(user.getUid(),user.getEmail(),user.getPassword(),user.getEmail(),user.getName());
 	}
 
 	@Override
@@ -69,5 +73,22 @@ public class UserDetailsImpl implements UserDetails{
 		// TODO Auto-generated method stub
 		return true;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 
 }

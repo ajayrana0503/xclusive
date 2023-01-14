@@ -23,13 +23,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.xclusive.entity.Users;
 import com.xclusive.jwt.JwtUtils;
+import com.xclusive.response.ResponseWrapper;
 import com.xclusive.security.service.UserDetailsImpl;
 import com.xclusive.service.UsersService;
 
 @RequestMapping("/user")
 @RestController
 @CrossOrigin(origins="http://localhost:4200")
-public class UserController {
+public class UserController extends BaseController{
 
 	@Autowired
 	private UsersService userService;
@@ -44,26 +45,35 @@ public class UserController {
 	PasswordEncoder encoder;
 
 	@PostMapping("/register")
-	public void saveUser(@RequestBody Map<String,String> m) {
-		Users u= new Users();
-	    u.setEmail(m.get("email"));
-	    u.setName(m.get("name"));
-	    u.setPassword(encoder.encode(m.get("password")));
-	    userService.saveUser(u);
-	
+	public ResponseEntity<ResponseWrapper<Map<String,Object>>> saveUser(@RequestBody Users user) {
+		Users newUser= new Users(user.getName(),user.getEmail(),encoder.encode(user.getPassword()));
+	    try {
+	    	userService.saveUser(newUser);
+	    	Map<String, Object> result= new HashMap<>();
+	    	result.put("user", newUser);
+	    	return  wrapResponse(result,HttpStatus.OK,"User registered successfully");
+	    }
+	    catch(Exception e) {
+	    	return wrapResponse(null,HttpStatus.IM_USED,"User already exists");
+	    }
 	}
 	
 	@PostMapping("/login")
-	public Map<String,String> signin(@RequestBody Map m) {
+	public ResponseEntity<ResponseWrapper<Map<String,Object>>> signin(@RequestBody Users user) {
+		try {
 		Authentication authentication= authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken(m.get("email"),m.get("password")));
+				new UsernamePasswordAuthenticationToken(user.getEmail(),user.getPassword()));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		String jwt= jwtUtils.generateJwtToken(authentication);
-		UserDetailsImpl userDetails= (UserDetailsImpl) authentication.getPrincipal();
-		Map<String, String> result= new HashMap<>();
+		UserDetailsImpl loggedInUser= (UserDetailsImpl) authentication.getPrincipal();
+		Map<String, Object> result= new HashMap<>();
+		result.put("user", loggedInUser);
 		result.put("jwt", jwt);
-		result.put("email", (String) m.get("email"));
-		return result;
+		return wrapResponse(result,HttpStatus.OK,"logged in successfully");
+		}
+		catch(Exception e) {
+			return wrapResponse(null,HttpStatus.FORBIDDEN,e.getMessage());
+		}
 	}
 	
 }

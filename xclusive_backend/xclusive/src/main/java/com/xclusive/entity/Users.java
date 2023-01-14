@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 @Table(name="USERS")
 public class Users {
 
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int uid;	
@@ -51,7 +52,12 @@ public class Users {
 		return "User [uid=" + uid + ", name=" + name + ", email=" + email + ", password=" + password + "]";
 	}
 	
-	
+	public Users(String name, String email, String password) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+	}
 	
 	
 }
