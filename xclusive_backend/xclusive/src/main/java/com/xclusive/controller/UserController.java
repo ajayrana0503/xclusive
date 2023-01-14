@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xclusive.entity.Users;
-import com.xclusive.service.UserService;
+import com.xclusive.jwt.JwtUtils;
+import com.xclusive.security.service.UserDetailsImpl;
+import com.xclusive.service.UsersService;
 
 @RequestMapping("/user")
 @RestController
@@ -24,24 +30,37 @@ import com.xclusive.service.UserService;
 public class UserController {
 
 	@Autowired
-	private UserService userService;
+	private UsersService userService;
+	
+	@Autowired
+	AuthenticationManager authenticationManager;
+	
+	@Autowired
+	JwtUtils jwtUtils;
 	
 	@PostMapping("/register")
-	public void saveUser(@RequestBody Map m) {
-		System.out.println(m.get("name"));
+	public void saveUser() {
 		Users u= new Users();
-		u.setEmail("ajay@gmail.com");
-		u.setName("ajay");
-		u.setPassword("ajay");
+//		u.setEmail(user.getEmail());
+//		u.setName(user.getName());
+//		u.setPassword(user.getPassword());
+		u.setEmail("abc@gmil.com");
+		u.setName("abc");
+		u.setPassword("abc");
 		this.userService.saveUser(u);
 	}
 	
-	@GetMapping("/getUserByEmail/{email}")
-	public ResponseEntity<Map> helloWorld(@PathVariable("email") String email ) {
-		Map<String,Users> mp=new HashMap<String,Users>();
-		Users user=userService.getUserByEmail(email);
-		mp.put("email", user);
-		return new ResponseEntity<Map>(mp, HttpStatus.BAD_REQUEST);
+	@PostMapping("/login")
+	public Map<String,String> signin(@RequestBody Map m) {
+		Authentication authentication= authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(m.get("email"),m.get("password")));
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		String jwt= jwtUtils.generateJwtToken(authentication);
+		UserDetailsImpl userDetails= (UserDetailsImpl) authentication.getPrincipal();
+		Map<String, String> result= new HashMap<>();
+		result.put("jwt", jwt);
+		result.put("email", (String) m.get("email"));
+		return result;
 	}
 	
 }
