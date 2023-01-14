@@ -12,7 +12,7 @@
             <span *ngIf="form['userName']['errors']['pattern']" class="invalid-entry">Username should be of valid
               format</span>
           </div>
-        </div><br><br>
+        </div><br>
       </div>
       <div>
         <div>
@@ -37,7 +37,7 @@
             </div> -->
           </div>
         </div>
-        <br><br>
+        <br>
         <div>
           <label>Confirm Password</label><br>
           <input type="password" formControlName="confirmPassword" [ngClass]="{'invalid': submitted && form['confirmPassword']['errors']}" />
@@ -48,7 +48,7 @@
         </div>
       </div>
       <div><br>
-        <button>Register</button>
+        <button class="btn">Register</button>
         <a href="">Forget Password</a>
       </div>
       <br>
