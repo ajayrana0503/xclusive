@@ -11,12 +11,14 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.xclusive.entity.Users;
@@ -38,16 +40,17 @@ public class UserController {
 	@Autowired
 	JwtUtils jwtUtils;
 	
+	@Autowired
+	PasswordEncoder encoder;
+
 	@PostMapping("/register")
-	public void saveUser() {
+	public void saveUser(@RequestBody Map<String,String> m) {
 		Users u= new Users();
-//		u.setEmail(user.getEmail());
-//		u.setName(user.getName());
-//		u.setPassword(user.getPassword());
-		u.setEmail("abc@gmil.com");
-		u.setName("abc");
-		u.setPassword("abc");
-		this.userService.saveUser(u);
+	    u.setEmail(m.get("email"));
+	    u.setName(m.get("name"));
+	    u.setPassword(encoder.encode(m.get("password")));
+	    userService.saveUser(u);
+	
 	}
 	
 	@PostMapping("/login")

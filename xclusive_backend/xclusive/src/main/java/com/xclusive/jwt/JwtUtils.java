@@ -16,10 +16,10 @@ import io.jsonwebtoken.*;
 @Component
 public class JwtUtils {
 	private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
-	@Value("${jwt.ExpirationMs}")
-	private int jwtExpirationMs;
-	@Value("${jwt.Secret}")
-	private String jwtSecret;
+	//@Value("${jwt.ExpirationMs}")
+	private int jwtExpirationMs=8000000;
+	//@Value("${jwt.Secret}")
+	private String jwtSecret="xclusive";
 
 	public boolean validateJwtToken(String authToken) {
 		try {
