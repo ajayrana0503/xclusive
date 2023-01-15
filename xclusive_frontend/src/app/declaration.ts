@@ -6,6 +6,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { LoginSignUpApiService } from "./services";
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
 
 export const component = [
@@ -27,7 +28,8 @@ export const imports = [
   AppRoutingModule,
   FormsModule,
   HttpClientModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  TooltipModule.forRoot()
 ];
 
 export const providers = [

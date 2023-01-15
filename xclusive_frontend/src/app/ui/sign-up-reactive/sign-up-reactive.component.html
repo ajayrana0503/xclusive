@@ -1,9 +1,22 @@
-<div class="main">
+<div class="text-center">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="first">
+        <img class="img-fluid" src="assets/images/1.gif">
+
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      
+      <div>
   <div>
-    <h1 align="center">SignUp</h1>
+    <br>
+    <h3 align="center" class="title">SignUp</h3>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <div>
         <div><br>
+          
           <label>Username</label><br>
           <input type="text" formControlName="userName"
             [ngClass]="{'invalid': submitted && form['userName']['errors']}" />
@@ -17,8 +30,9 @@
       <div>
         <div>
 
-          <label>Email</label><br>
+          <label class="form-label">Email</label><br>
           <input type="text" formControlName="email"  [ngClass]="{'invalid': submitted && form['email']['errors']}" />
+
           <div *ngIf="submitted && form['email']['errors']" >
             <div *ngIf="form['email']['errors']['required']"  class="invalid-entry">Email is required</div>
             <div *ngIf="form['email']['errors']['email']"  class="invalid-entry">Email must be a valid email address</div>
@@ -27,7 +41,7 @@
       </div><br>
       <div>
         <div>
-          <label>Password</label><br>
+          <label class="form-label">Password</label><br>
           <input type="password" formControlName="password" [ngClass]="{'invalid': submitted && form['password']['errors']}"/>
           <div *ngIf="submitted && form['password']['errors']">
             <div *ngIf="form['password']['errors']['required']"  class="invalid-entry">Password is required</div>
@@ -39,7 +53,7 @@
         </div>
         <br>
         <div>
-          <label>Confirm Password</label><br>
+          <label class="form-label">Confirm Password</label><br>
           <input type="password" formControlName="confirmPassword" [ngClass]="{'invalid': submitted && form['confirmPassword']['errors']}" />
           <div *ngIf="submitted && form['confirmPassword']['errors']">
             <div *ngIf="form['confirmPassword']['errors']['required']"  class="invalid-entry">Confirm Password is required</div>
@@ -48,7 +62,7 @@
         </div>
       </div>
       <div><br>
-        <button class="btn">Register</button>
+        <button class="btn btn-primary">Register</button>
         <a href="">Forget Password</a>
       </div>
       <br>
@@ -60,3 +74,9 @@
     <br>
   </div>
 </div>
+
+
+    </div>
+  </div>
+</div>
+ 

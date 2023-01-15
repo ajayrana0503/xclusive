@@ -4,51 +4,44 @@
 .invalid-entry{
   color : red;
 }
-.main{
-  text-align: center;
-  margin-top: 20px;
-  width: 30%;
-  box-shadow: 5px 10px #888888;
-  background-color: skyblue;
-  border-radius: 10%;
+.first{
+  background-color: #3861C0;
+  width: 100%;
+  
+  color: #ffffff;
 }
-.btn{
-  color:#fff;
-  background-color:#e74c3c;
+.title{
+  color: grey;
+  font-family: "Sansita Swashed", cursive;
+}
+input {
+  width: 60%;
+  border: 2px solid #000;
   outline: none;
-    border: 0;
-    color: #fff;
-  padding:10px 20px;
-  text-transform:uppercase;
-  border-radius:2px;
-  cursor:pointer;
-  position:relative;
+  background: none;
+  padding: 7px;
+  border-radius: 8px;
+  font-size: 1.2em;
 }
-input[type=text]{
-  border:0;
-  border-bottom:2px solid white;  
-  background:transparent;
-  width:50%;
-  padding:8px 0 5px 0;
-  font-size:16px;
-  color:#fff;
+span {
+  font-size: 1em;
+  transition: 0.6s;
+  font-family: sans-serif;
 }
-input[type=text]:focus{ 
- border:none; 
- outline:none;
- border-bottom:2px solid yellow; 
+
+input:focus ~ span, input:valid ~ span {
+  transform: translateX(-13px) translateY(-35px);
+  font-size: 1em;
 }
-input[type=password]{
-  border:0;
-  border-bottom:2px solid white;  
-  background:transparent;
-  width:50%;
-  padding:8px 0 5px 0;
-  font-size:16px;
-  color:#fff;
+
+@media (min-width:480px){
+.first{
+  height: 600px;
 }
-input[type=password]:focus{ 
- border:none; 
- outline:none;
- border-bottom:2px solid yellow; 
+}
+
+@media (max-width:480px){
+  .first{
+    height: 100%;
+  }
 }
