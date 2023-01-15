@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { take } from "rxjs";
-import { LoginSignUpApiService } from "src/app/services";
+import { AuthenticationService, LoginSignUpApiService } from "src/app/services";
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,8 @@ export class LoginComponent {
 
   constructor(private _fb: FormBuilder,
     private _loginSignUpApiService: LoginSignUpApiService,
-    private _navigation: Router
+    private _navigation: Router,
+    private _authenticationService : AuthenticationService
   ) {
   }
 
@@ -42,7 +43,11 @@ export class LoginComponent {
     else {
 
       let input = this._parseInput();
-      this._loginSignUpApiService.onRegisterUser(input).pipe(take(1)).subscribe(() => { },
+      this._loginSignUpApiService.onLogin(input).pipe(take(1)).subscribe((response : any) => {
+        console.log(response.output.jwt)
+        this._authenticationService.setToken(response?.output?.jwt)
+
+       },
         () => { })
 
     }

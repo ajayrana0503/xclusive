@@ -48,16 +48,20 @@ export class SignUpReactiveComponent implements OnInit{
     else{
 
       let input = this._parseInput();
-      this._loginSignUpApiService.onRegisterUser(input).pipe(take(1)).subscribe(()=>
-      {},
-      ()=>{})
+      this._loginSignUpApiService.onRegisterUser(input).pipe(take(1)).subscribe((response)=>
+      {
+        console.log(response);
+      },
+      (error)=>{
+        console.log(error)
+      })
 
     }
 
 }
 private _parseInput(){
       let data = this.registerForm['value'];
-      return {username : data.userName , email : data.email , password : data.password};
+      return {name : data.userName , email : data.email , password : data.password};
 
 }
 
